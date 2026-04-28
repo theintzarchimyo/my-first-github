@@ -9,6 +9,7 @@ import com.example.demo.mapper.UserMapper;
 
 @Service
 public class UserService {
+	
 	private final UserMapper mapper;
 
     public UserService(UserMapper mapper) {
