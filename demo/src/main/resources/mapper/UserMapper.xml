@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <select id="findAll" resultType="com.example.demo.entity.User">
+        SELECT name, address, phone_number FROM users
+    </select>
+
+    <select id="findByName" parameterType="string" resultType="com.example.demo.entity.User">
+        SELECT name, address, phone_number FROM users WHERE name = #{name}
+    </select>
+    
+    <select id="findByAddress" parameterType="string" resultType="com.example.demo.entity.User">
+        SELECT name, address, phone_number FROM users WHERE address = #{address}
+    </select>
+
+    <insert id="insert" parameterType="com.example.demo.entity.User">
+        INSERT INTO users(name, address, phone_number)
+        VALUES (#{name}, #{address},  #{phone_number})
+    </insert>
+
+    <update id="update" parameterType="com.example.demo.entity.User">
+        UPDATE users
+        SET address = #{address}, phone_number = #{phone_number}
+        WHERE name = #{name}
+    </update>
+
+    <delete id="delete" parameterType="string">
+        DELETE FROM users WHERE name = #{name}
+    </delete>
+
+</mapper>
